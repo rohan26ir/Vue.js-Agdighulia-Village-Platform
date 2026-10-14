@@ -2,11 +2,19 @@ import { createRouter, createWebHistory } from 'vue-router'
 
 import About from '@/pages/About.vue'
 import Category from '@/pages/Category.vue'
+import Institute from '@/pages/Institute.vue'
+import InstituteDetail from '@/pages/InstituteDetail.vue'
 import Gallery from '@/pages/Gallery.vue'
 import History from '@/pages/History.vue'
 import Home from '@/pages/Home.vue'
 import InteractiveMap from '@/pages/InteractiveMap.vue'
 import NotFound from '@/pages/NotFound.vue'
+import Contact from '@/pages/Contact.vue'
+import Hospital from '@/pages/Hospital.vue'
+import Mosque from '@/pages/Mosque.vue'
+import Sports from '@/pages/Sports.vue'
+import SportsDetail from '@/pages/SportsDetail.vue'
+import MatchSchedule from '@/pages/MatchSchedule.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -41,30 +49,80 @@ const router = createRouter({
       },
     },
     {
+      path: '/contact',
+      name: 'contact',
+      component: Contact,
+      meta: {
+        title: 'Contact',
+        description: 'Contact Us',
+        keywords: 'Agdighulia contact, contact us',
+      },
+    },
+    {
       path: '/institute',
       name: 'institute',
-      component: Category,
+      component: Institute,
       meta: {
         title: 'Institutes',
         description: 'Educational institutes and schools in Agdighulia.',
       },
     },
     {
+      path: '/institute/:slug',
+      name: 'institute-detail',
+      component: InstituteDetail,
+      meta: {
+        title: 'Institute Details',
+        description: 'Detailed information about educational institute in Agdighulia.',
+      },
+    },
+    {
       path: '/hospital',
       name: 'hospital',
-      component: Category,
+      component: Hospital,
       meta: {
-        title: 'Hospitals',
-        description: 'Healthcare clinics and hospitals serving Agdighulia.',
+        title: 'Hospitals & Pharmacies',
+        description: 'Healthcare clinics, hospitals and pharmacies serving Agdighulia.',
+      },
+    },
+    {
+      path: '/mosque',
+      name: 'mosque',
+      component: Mosque,
+      meta: {
+        title: 'Mosques & Islamic Centers',
+        description: 'Mosques, prayer times and religious centers in Agdighulia.',
       },
     },
     {
       path: '/sports',
       name: 'sports',
-      component: Category,
+      component: Sports,
       meta: {
-        title: 'Sports',
-        description: 'Sports grounds and activities in Agdighulia.',
+        title: 'Sports & Cricket Clubs',
+        description: 'Cricket clubs, match scheduling, tournaments, and sports grounds in Agdighulia.',
+      },
+    },
+    {
+      path: '/sports/schedule',
+      name: 'sports-schedule',
+      component: MatchSchedule,
+      meta: {
+        title: 'Match Schedule & Fixtures',
+        description: 'Cricket match schedule, tournament fixtures, and venues in Agdighulia.',
+      },
+    },
+    {
+      path: '/sports/matches',
+      redirect: '/sports/schedule',
+    },
+    {
+      path: '/sports/:slug',
+      name: 'sports-detail',
+      component: SportsDetail,
+      meta: {
+        title: 'Sports Club Details',
+        description: 'Detailed information, squad lineup, and records of cricket club in Agdighulia.',
       },
     },
     {
@@ -95,6 +153,7 @@ const router = createRouter({
         title: 'Page not found',
         description: 'The requested page on Agdighulia Village platform could not be found.',
         keywords: 'Agdighulia 404, page not found',
+        layout: 'blank',
       },
     },
   ],

@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import Heading from '@/components/ui/Heading.vue'
 import { useLanguage } from '@/composables/useLanguage'
 
 const { t } = useLanguage()
@@ -6,12 +7,12 @@ const { t } = useLanguage()
 
 <template>
   <div class="page-section container section-space">
-    <div class="section-heading">
-      <p class="eyebrow eyebrow-accent">{{ t('map.badge') }}</p>
-      <h2>{{ t('map.title') }}</h2>
-      <p style="margin-top: 16px; color: var(--color-muted);">
-        {{ t('map.desc') }}
-      </p>
-    </div>
+    <Heading
+      as="h2"
+      size="lg"
+      :badge="t('map.badge')"
+      :title="t('map.title')"
+      :description="t('map.desc')"
+    />
   </div>
 </template>

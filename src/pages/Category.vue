@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { computed } from 'vue'
 import { useRoute } from 'vue-router'
-import Badge from '@/components/ui/Badge.vue'
+import Heading from '@/components/ui/Heading.vue'
 import { useLanguage } from '@/composables/useLanguage'
 
 const route = useRoute()
@@ -62,20 +62,16 @@ const categoryDetails = computed(() => {
     <div class="max-w-[90%] lg:max-w-5xl mx-auto px-4">
       
       <!-- Page Header -->
-      <div class="text-center max-w-3xl mx-auto mb-16">
-        <div class="mb-4">
-          <Badge variant="subtle" size="md">
-            {{ categoryDetails.badge }}
-          </Badge>
-        </div>
-        <h1 class="text-4xl sm:text-5xl font-extrabold text-foreground tracking-tight leading-tight mb-6">
-          <span class="mr-3">{{ categoryDetails.icon }}</span>
-          <span>{{ categoryDetails.title }}</span>
-        </h1>
-        <p class="text-lg text-muted-foreground leading-relaxed">
-          {{ categoryDetails.desc }}
-        </p>
-      </div>
+      <Heading
+        as="h1"
+        size="lg"
+        badgeVariant="subtle"
+        :badge="categoryDetails.badge"
+        :badgeIcon="categoryDetails.icon"
+        :title="categoryDetails.title"
+        :description="categoryDetails.desc"
+        class="mb-16"
+      />
 
       <!-- Items Grid -->
       <div class="grid grid-cols-1 md:grid-cols-3 gap-8">

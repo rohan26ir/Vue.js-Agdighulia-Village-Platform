@@ -1,10 +1,17 @@
 <script setup lang="ts">
 import { RouterView, useRoute } from 'vue-router'
-import { watch } from 'vue'
-import Navbar from '@/components/layout/Navbar.vue'
-import Footer from '@/components/layout/Footer.vue'
+import { computed, watch } from 'vue'
+import DefaultLayout from '@/layouts/DefaultLayout.vue'
+import BlankLayout from '@/layouts/BlankLayout.vue'
 
 const route = useRoute()
+
+const layoutComponent = computed(() => {
+  if (route.meta?.layout === 'blank' || route.meta?.layout === 'empty' || route.meta?.hideNavbarFooter) {
+    return BlankLayout
+  }
+  return DefaultLayout
+})
 
 const DEFAULT_DESCRIPTION =
   'A digital home for the people, culture, news, and shared future of Agdighulia Village.'
@@ -43,13 +50,7 @@ watch(
 </script>
 
 <template>
-  <div class="site-shell relative">
-    <Navbar />
-
-    <main id="main-content" class=" ">
-      <RouterView />
-    </main>
-
-    <Footer />
-  </div>
+  <component :is="layoutComponent">
+    <RouterView />
+  </component>
 </template>

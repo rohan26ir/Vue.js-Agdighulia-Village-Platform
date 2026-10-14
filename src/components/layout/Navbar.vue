@@ -6,7 +6,7 @@ import LanguageToggle from './LanguageToggle.vue'
 import { useLanguage } from '@/composables/useLanguage'
 
 const route = useRoute()
-const { t } = useLanguage()
+const { t, locale } = useLanguage()
 const isMobileMenuOpen = ref(false)
 
 const toggleMobileMenu = () => {
@@ -44,7 +44,7 @@ onUnmounted(() => {
       <div class="relative flex items-center justify-between h-20 rounded-t-[32px] px-0">
      
         <!-- Left Brand Cutout Tab -->
-        <div class="relative bg-background text-foreground py-3 px-5 rounded-xl flex items-center z-10 -ml-3 -mt-4 shadow-sm">
+        <div class="relative bg-background text-foreground w-60 py-3 px-5 rounded-xl flex items-center z-10 -ml-3 -mt-4 shadow-sm">
           <RouterLink class="flex items-center gap-3 no-underline" to="/" aria-label="Agdighulia Home">
             <span class="inline-grid w-10 h-10 place-items-center rounded-xl bg-[#FF3D00] text-white text-xl font-bold font-serif shadow-md shadow-[#FF3D00]/30">A</span>
             <div class="flex flex-col leading-tight">
@@ -55,7 +55,7 @@ onUnmounted(() => {
         </div>
 
         <!-- Center Navigation Links (Desktop) -->
-        <nav class="hidden md:flex items-center justify-center gap-8 mx-auto text-white bg-black h-[80%] px-10 rounded-full" aria-label="Main Navigation">
+        <nav class="hidden md:flex items-center justify-center gap-8 mx-auto text-white bg-black w-130 h-[80%] px-10 rounded-full" aria-label="Main Navigation">
           <RouterLink to="/" exact-active-class="!text-white !font-bold" class="text-white/90 text-sm font-semibold no-underline hover:text-white transition-colors duration-180">{{ t('nav.home') }}</RouterLink>
           <RouterLink to="/history" active-class="!text-white !font-bold" class="text-white/90 text-sm font-semibold no-underline hover:text-white transition-colors duration-180">{{ t('nav.history') }}</RouterLink>
           <RouterLink to="/gallery" active-class="!text-white !font-bold" class="text-white/90 text-sm font-semibold no-underline hover:text-white transition-colors duration-180">{{ t('nav.gallery') }}</RouterLink>
@@ -91,12 +91,23 @@ onUnmounted(() => {
                   <span>{{ t('nav.hospital') }}</span>
                 </RouterLink>
 
+
+                <!-- mosque  -->
+                <RouterLink
+                  to="/mosque"
+                  active-class="!text-white !bg-[#FF3D00]"
+                  class="flex items-center gap-2.5 px-4 py-2.5 rounded-xl text-xs font-semibold text-zinc-300 hover:text-white hover:bg-zinc-800/80 no-underline transition-colors"
+                >
+                  <span>🕌</span>
+                  <span>{{ locale === 'bn' ? 'মসজিদ' : 'Mosque' }}</span>
+                </RouterLink>
+
                 <RouterLink
                   to="/sports"
                   active-class="!text-white !bg-[#FF3D00]"
                   class="flex items-center gap-2.5 px-4 py-2.5 rounded-xl text-xs font-semibold text-zinc-300 hover:text-white hover:bg-zinc-800/80 no-underline transition-colors"
                 >
-                  <span>⚽</span>
+                  <span>🏏</span>
                   <span>{{ t('nav.sports') }}</span>
                 </RouterLink>
               </div>
@@ -110,7 +121,7 @@ onUnmounted(() => {
           <div class="hidden md:flex items-center gap-3">
             <LanguageToggle />
             <DarkModeToggle />
-            <RouterLink to="/about" class="inline-flex items-center justify-between bg-[#FF3D00] text-white px-3.5 w-[150px] h-[38px] rounded-full text-xs font-bold no-underline hover:bg-[#E03600] shadow-sm shadow-[#FF3D00]/25 transition-colors duration-180 shrink-0 select-none">
+            <RouterLink to="/contact" class="inline-flex items-center justify-between bg-[#FF3D00] text-white px-3.5 w-[150px] h-[38px] rounded-full text-xs font-bold no-underline hover:bg-[#E03600] shadow-sm shadow-[#FF3D00]/25 transition-colors duration-180 shrink-0 select-none">
               <span class="truncate">{{ t('nav.connect') }}</span>
               <span class="inline-grid w-5 h-5 place-items-center bg-white text-[#FF3D00] rounded-full text-xs font-extrabold shrink-0" aria-hidden="true">&nearr;</span>
             </RouterLink>
@@ -255,18 +266,28 @@ onUnmounted(() => {
                 </RouterLink>
 
                 <RouterLink
+                  to="/mosque"
+                  active-class="!text-white !bg-[#FF3D00]"
+                  class="flex items-center gap-3 px-4 py-2.5 text-muted-foreground hover:text-foreground text-sm font-semibold no-underline rounded-xl hover:bg-muted transition-all pl-6"
+                  @click="closeMobileMenu"
+                >
+                  <span>🕌</span>
+                  <span>{{ locale === 'bn' ? 'মসজিদ' : 'Mosque' }}</span>
+                </RouterLink>
+
+                <RouterLink
                   to="/sports"
                   active-class="!text-white !bg-[#FF3D00]"
                   class="flex items-center gap-3 px-4 py-2.5 text-muted-foreground hover:text-foreground text-sm font-semibold no-underline rounded-xl hover:bg-muted transition-all pl-6"
                   @click="closeMobileMenu"
                 >
-                  <span>⚽</span>
+                  <span>🏏</span>
                   <span>{{ t('nav.sports') }}</span>
                 </RouterLink>
               </div>
 
               <RouterLink
-                to="/about"
+                to="/contact"
                 active-class="!text-white !bg-[#FF3D00]"
                 class="flex items-center gap-3 px-4 py-3 text-muted-foreground hover:text-foreground text-sm font-bold no-underline rounded-xl hover:bg-muted transition-all"
                 @click="closeMobileMenu"
@@ -288,7 +309,7 @@ onUnmounted(() => {
               </div>
 
               <RouterLink
-                to="/about"
+                to="/contact"
                 class="w-full inline-flex items-center justify-center gap-2 bg-[#FF3D00] text-white py-3 rounded-full text-xs font-bold no-underline hover:bg-[#E03600] transition-all shadow-md shadow-[#FF3D00]/25"
                 @click="closeMobileMenu"
               >

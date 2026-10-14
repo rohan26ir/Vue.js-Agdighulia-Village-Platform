@@ -203,17 +203,12 @@ p {
 }
 
 h1,
+h2,
 h3,
 h4 {
   line-height: 1.15;
   letter-spacing: -0.035em;
-  color: var(--color-ink-dark);
-}
-
-h2 {
-  line-height: 1.15;
-  letter-spacing: -0.035em;
-  color: #000000;
+  color: var(--foreground);
 }
 
 .site-shell {
@@ -528,9 +523,7 @@ main {
   color: var(--color-ink);
 }
 
-.page-section {
-  min-height: 560px;
-}
+
 
 .about-layout {
   display: grid;
