@@ -73,16 +73,40 @@ const getInstituteMeta = (inst: Institute): InstituteCardMeta => {
     <div class="container max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       
       <!-- Page Header -->
-      <div class="flex flex-col justify-center items-center">
+      <div class="py-6 sm:py-10 mb-6 sm:mb-10">
         <Heading
-        as="h1"
-        size="lg"
-        badgeIcon="🎓"
-        :badge="locale === 'bn' ? 'শিক্ষা ও বিদ্যাপিঠ' : 'Education & Institutes'"
-        :title="locale === 'bn' ? 'আমাদের শিক্ষা প্রতিষ্ঠানসমূহ' : 'Our Educational Institutes'"
-        :description="locale === 'bn' ? 'আগদিঘুলিয়া গ্রামের সেরা 🎓 বিদ্যাপিঠসমূহ' : 'Check out educational institutes in Agdighulia'"
-        class="pb-14"
-      />
+          as="h1"
+          size="xl"
+          maxWidth="5xl"
+          badgeIcon="🎓"
+          :badge="locale === 'bn' ? 'শিক্ষা ও বিদ্যাপিঠ' : 'Education & Institutes'"
+          :description="
+            locale === 'bn'
+              ? 'আগদিঘুলিয়ার আগামী প্রজন্মকে আলোকিত করতে পরিচালিত প্রাথমিক, মাধ্যমিক ও শিক্ষা প্রতিষ্ঠানসমূহ।'
+              : 'Explore the schools, madrasas, and learning centers inspiring students in Agdighulia.'
+          "
+        >
+          <template #title>
+            <template v-if="locale === 'bn'">
+              জ্ঞানের আলো আর
+              <br class="hidden sm:inline" />
+              <span class="bg-[#a6f05c] text-black px-3.5 sm:px-5 py-0.5 sm:py-1 rounded-full inline-block font-extrabold align-middle mx-1 sm:mx-1.5 shadow-xs">
+                শিক্ষায়
+              </span>
+              গড়ে ওঠা আমাদের
+              <span class="text-[#FF3D00] font-extrabold">ভবিষ্যৎ।</span>
+            </template>
+            <template v-else>
+              Empowering minds through
+              <br class="hidden sm:inline" />
+              <span class="bg-[#a6f05c] text-black px-3.5 sm:px-5 py-0.5 sm:py-1 rounded-full inline-block font-extrabold align-middle mx-1 sm:mx-1.5 shadow-xs">
+                education
+              </span>
+              and lifelong
+              <span class="text-[#FF3D00] font-extrabold">learning.</span>
+            </template>
+          </template>
+        </Heading>
       </div>
 
       <!-- 2-Column Card Grid (Matching Reference Image Design) -->

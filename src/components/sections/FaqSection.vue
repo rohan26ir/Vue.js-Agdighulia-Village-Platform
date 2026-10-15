@@ -4,14 +4,10 @@ import { RouterLink } from 'vue-router'
 import { useLanguage } from '@/composables/useLanguage'
 
 const { t } = useLanguage()
-const activeIndex = ref<number | null>(1)
+const activeIndex = ref<number>(1)
 
 const toggleFaq = (index: number) => {
-  if (activeIndex.value === index) {
-    activeIndex.value = null
-  } else {
-    activeIndex.value = index
-  }
+  activeIndex.value = index
 }
 
 const faqs = computed(() => [
@@ -63,9 +59,9 @@ const faqs = computed(() => [
     <div class="max-w-[90%] w-full mx-auto flex flex-col justify-center items-center gap-12">
       
       <!-- Large Headline Title -->
-      <div class="text-center max-w-3xl mx-auto mb-12 sm:mb-16">
-        <h2 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-black leading-tight">
-          <span class="text-black">{{ t('faq.title') }}</span>
+      <div class="text-center max-w-3xl mx-auto mb-5">
+        <h2 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-foreground leading-tight">
+          <span>{{ t('faq.title') }}</span>
         </h2>
         <p class="text-muted-foreground text-base sm:text-lg mt-4">
           {{ t('faq.subtitle') }}
@@ -101,7 +97,7 @@ const faqs = computed(() => [
               :class="[
                 activeIndex === index
                   ? 'bg-muted text-foreground rotate-180'
-                  : 'bg-muted text-muted-foreground'
+                  : 'bg-muted text-black '
               ]"
             >
               <svg

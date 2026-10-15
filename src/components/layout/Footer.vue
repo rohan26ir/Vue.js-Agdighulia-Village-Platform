@@ -142,7 +142,7 @@ const currentYear = new Date().getFullYear()
 }
 
 .section-label {
-  color: var(--color-muted);
+  color: var(--muted-foreground);
   font-size: 13px;
   font-weight: 500;
   margin-bottom: 8px;
@@ -277,7 +277,7 @@ const currentYear = new Date().getFullYear()
 
 .office-info p {
   font-size: 13px;
-  color: var(--color-muted);
+  color: var(--muted-foreground);
   line-height: 1.75;
 }
 
@@ -337,7 +337,7 @@ const currentYear = new Date().getFullYear()
 
 .copyright {
   font-size: 12px;
-  color: var(--color-muted);
+  color: var(--muted-foreground);
   margin: 0;
 }
 

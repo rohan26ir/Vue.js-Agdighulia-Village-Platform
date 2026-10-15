@@ -7,8 +7,17 @@ const applyTheme = (dark: boolean) => {
   isDark.value = dark
   if (dark) {
     document.documentElement.classList.add('dark')
+    document.documentElement.setAttribute('data-theme', 'dark')
+    document.body.classList.add('dark')
   } else {
     document.documentElement.classList.remove('dark')
+    document.documentElement.removeAttribute('data-theme')
+    document.body.classList.remove('dark')
+  }
+
+  const themeColorMeta = document.querySelector('meta[name="theme-color"]')
+  if (themeColorMeta) {
+    themeColorMeta.setAttribute('content', dark ? '#0A0A0A' : '#f8fafc')
   }
 }
 

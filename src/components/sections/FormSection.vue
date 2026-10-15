@@ -42,9 +42,9 @@ const handleSubmit = async () => {
           
           <!-- Top Heading -->
           <div>
-            <h1 class="text-4xl sm:text-5xl md:text-6xl font-extrabold text-foreground tracking-tight mb-4 leading-none">
+            <h2 class="text-4xl sm:text-5xl md:text-6xl font-extrabold text-foreground tracking-tight mb-4 leading-none">
               {{ t('contact.letsTalk') }}
-            </h1>
+            </h2>
             <p class="text-lg sm:text-xl text-muted-foreground font-medium">
               {{ t('contact.letsTalkSub') }}
             </p>
@@ -98,7 +98,7 @@ const handleSubmit = async () => {
             </div>
           </transition>
 
-          <form @submit.prevent="handleSubmit" class="space-y-6">
+          <form @submit.prevent="handleSubmit" class="flex flex-col gap-5">
             
             <!-- Name Field -->
             <div>

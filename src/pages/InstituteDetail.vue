@@ -246,10 +246,10 @@ const institute = computed(() => {
       <div class="mb-6 flex items-center justify-between">
         <RouterLink
           to="/institute"
-          class="inline-flex items-center gap-2 px-4 py-2 rounded-full text-black dark:text-white hover:text-foreground hover:border-[#FF3D00] text-xs font-bold transition-all no-underline shadow-xs"
+          class="inline-flex items-center gap-2 px-4 py-2 rounded-full text-foreground hover:border-[#FF3D00] text-xs font-bold transition-all no-underline shadow-xs"
         >
-          <span class="text-black">&larr;</span>
-          <span class="text-black">{{ locale === 'bn' ? 'সকল প্রতিষ্ঠানে ফিরে যান' : 'Back to All Institutes' }}</span>
+          <span>&larr;</span>
+          <span>{{ locale === 'bn' ? 'সকল প্রতিষ্ঠানে ফিরে যান' : 'Back to All Institutes' }}</span>
         </RouterLink>
       </div>
 

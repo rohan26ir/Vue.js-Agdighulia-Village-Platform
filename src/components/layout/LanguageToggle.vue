@@ -41,7 +41,7 @@ const { locale, toggleLanguage } = useLanguage()
 }
 
 .lang-badge {
-  color: var(--color-muted);
+  color: var(--muted-foreground);
   transition: color 180ms ease, font-weight 180ms ease;
 }
 

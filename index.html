@@ -10,9 +10,21 @@
     content="Agdighulia, Agdighulia Village, community, rural heritage, village culture, local news, events">
   <meta name="theme-color" content="#09090b">
   <title>Agdighulia — Our Village</title>
+  <meta name="google-site-verification" content="644nDAdFwbmSq0PCsVXIMZ-Osvmb7BlhPkNSz5nDzDI" />
+  <script>
+    (function () {
+      try {
+        const theme = localStorage.getItem('theme')
+        if (theme === 'dark' || (!theme && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+          document.documentElement.classList.add('dark')
+          document.documentElement.setAttribute('data-theme', 'dark')
+        }
+      } catch (e) { }
+    })()
+  </script>
 </head>
 
-<body>
+<body class="  ">
   <div id="app"></div>
   <script type="module" src="/src/main.ts"></script>
 </body>

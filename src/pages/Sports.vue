@@ -37,17 +37,38 @@ const otherClubs = computed(() => CRICKET_CLUBS.slice(1))
       </div>
 
       <!-- Page Header -->
-       <div class="flex flex-col justify-center items-center  py-10">
-         <Heading
-           as="h1"
-           size="lg"
-           badgeIcon="🏏"
-           :badge="locale === 'bn' ? 'খেলাধুলা ও ক্রিকেট' : 'Sports & Cricket Clubs'"
-           :title="locale === 'bn' ? 'খেলাধুলা ও ক্রিকেট ক্লাবসমূহ' : 'Sports & Cricket Clubs'"
-           :description="locale === 'bn' ? 'আগদিঘুলিয়া গ্রামের 🏏 শীর্ষ ক্রিকেট ক্লাব, টুর্নামেন্ট ও ম্যাচ শিডিউল' : 'Premier cricket clubs, tournaments, match scheduling & youth academies in Agdighulia'"
-           class="pb-2"
-      />
-       </div>
+      <div class="py-6 sm:py-10 mb-4 sm:mb-8">
+        <Heading
+          as="h1"
+          size="xl"
+          badgeIcon="🏏"
+          :badge="locale === 'bn' ? 'খেলাধুলা ও ক্রিকেট' : 'Sports & Cricket Clubs'"
+          :description="
+            locale === 'bn'
+              ? 'আগদিঘুলিয়ার শীর্ষ রেজিস্টার্ড ক্রিকেট ক্লাব, টুর্নামেন্ট সূচি এবং স্থানীয় প্রতিভাবান খেলোয়াড়দের বিস্তারিত তথ্য।'
+              : 'Premier cricket clubs, tournament schedules, and talented local athletes shaping our sporting culture.'
+          "
+        >
+          <template #title>
+            <template v-if="locale === 'bn'">
+              মাঠের উন্মাদনা আর
+              <span class="bg-[#a6f05c] text-black px-3.5 sm:px-5 py-0.5 sm:py-1 rounded-full inline-block font-extrabold align-middle mx-1 sm:mx-1.5 shadow-xs">
+                ঐক্যের
+              </span>
+              বিজয়ী
+              <span class="text-[#FF3D00] font-extrabold">গৌরব।</span>
+            </template>
+            <template v-else>
+              Passion on the pitch,
+              <span class="bg-[#a6f05c] text-black px-3.5 sm:px-5 py-0.5 sm:py-1 rounded-full inline-block font-extrabold align-middle mx-1 sm:mx-1.5 shadow-xs">
+                pride
+              </span>
+              for our
+              <span class="text-[#FF3D00] font-extrabold">village.</span>
+            </template>
+          </template>
+        </Heading>
+      </div>
 
       <!-- Tournament & Match Schedule Route Promo Card -->
       <div class="relative overflow-hidden rounded-2xl sm:rounded-3xl border border-border/80 bg-gradient-to-r from-card via-card to-[#FF3D00]/5 p-6 sm:p-8 lg:p-10 shadow-sm flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
@@ -76,17 +97,19 @@ const otherClubs = computed(() => CRICKET_CLUBS.slice(1))
 
       <!-- Clubs Section Title -->
       <div class="pt-6">
-        <div class="flex flex-col justify-center items-center py-10">
+        <div class="mb-8 sm:mb-12 w-full">
           <Heading
-          as="h2"
-          size="md"
-          border
-          badgeIcon="🏆"
-          :badge="locale === 'bn' ? 'আমাদের দলসমূহ' : 'Participating Clubs'"
-          :title="locale === 'bn' ? 'আগদিঘুলিয়ার রেজিস্টার্ড ক্রিকেট ক্লাব' : 'Registered Cricket Clubs of Agdighulia'"
-          :description="locale === 'bn' ? 'খেলোয়াড়দের তালিকা, পরিসংখ্যান ও বিস্তারিত দেখতে ক্লাবে ক্লিক করুন' : 'Click on any club to view squad roster, stats, captain details, and honors'"
-          class="mb-10"
-        />
+            as="h2"
+            variant="subheading"
+            badgeIcon="🏆"
+            :badge="locale === 'bn' ? 'আমাদের দলসমূহ' : 'Participating Clubs'"
+            :title="locale === 'bn' ? 'আগদিঘুলিয়ার রেজিস্টার্ড ক্রিকেট ক্লাবসমূহ' : 'Registered Cricket Clubs of Agdighulia'"
+            :description="
+              locale === 'bn'
+                ? 'খেলোয়াড়দের তালিকা, পরিসংখ্যান ও বিস্তারিত দেখতে ক্লাবে ক্লিক করুন।'
+                : 'Click on any club to view squad roster, stats, captain details, and honors.'
+            "
+          />
         </div>
 
         <!-- Cricket Clubs Grid (Row 1: Full-Width Featured Club + Remaining Clubs 2x2) -->
@@ -137,8 +160,8 @@ const otherClubs = computed(() => CRICKET_CLUBS.slice(1))
               </div>
 
               <!-- Club Title -->
-              <h3 class="text-xl sm:text-2xl lg:text-3xl font-extrabold text-foreground hover:text-primary transition-colors py-1 leading-tight">
-                <RouterLink :to="`/sports/${featuredClub.slug}`">
+              <h3 class="text-xl sm:text-2xl lg:text-3xl font-extrabold text-foreground py-1 leading-tight">
+                <RouterLink :to="`/sports/${featuredClub.slug}`" class="text-foreground hover:text-[#FF3D00] transition-colors no-underline">
                   {{ locale === 'bn' ? featuredClub.nameBn : featuredClub.nameEn }}
                 </RouterLink>
               </h3>
@@ -166,7 +189,7 @@ const otherClubs = computed(() => CRICKET_CLUBS.slice(1))
                 <div
                   v-for="(facility, fIdx) in (locale === 'bn' ? featuredClub.facilitiesBn : featuredClub.facilitiesEn)"
                   :key="fIdx"
-                  class="flex items-center gap-2 text-foreground/85 dark:text-zinc-300"
+                  class="flex items-center gap-2 text-foreground/90"
                 >
                   <svg class="w-4 h-4 text-emerald-500 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
                     <polyline points="20 6 9 17 4 12"></polyline>
@@ -241,8 +264,8 @@ const otherClubs = computed(() => CRICKET_CLUBS.slice(1))
               </div>
 
               <!-- Title -->
-              <h3 class="text-xl sm:text-2xl font-bold text-foreground hover:text-primary transition-colors py-2 leading-tight">
-                <RouterLink :to="`/sports/${club.slug}`">
+              <h3 class="text-xl sm:text-2xl font-bold text-foreground py-2 leading-tight">
+                <RouterLink :to="`/sports/${club.slug}`" class="text-foreground hover:text-[#FF3D00] transition-colors no-underline">
                   {{ locale === 'bn' ? club.nameBn : club.nameEn }}
                 </RouterLink>
               </h3>
@@ -267,7 +290,7 @@ const otherClubs = computed(() => CRICKET_CLUBS.slice(1))
                 <div
                   v-for="(facility, fIdx) in (locale === 'bn' ? club.facilitiesBn.slice(0, 4) : club.facilitiesEn.slice(0, 4))"
                   :key="fIdx"
-                  class="flex items-center gap-2 text-foreground/85 dark:text-zinc-300"
+                  class="flex items-center gap-2 text-foreground/90"
                 >
                   <svg class="w-4 h-4 text-emerald-500 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
                     <polyline points="20 6 9 17 4 12"></polyline>

@@ -2,6 +2,7 @@
 import { computed } from 'vue'
 import { RouterLink } from 'vue-router'
 import { useLanguage } from '@/composables/useLanguage'
+import Heading from '@/components/ui/Heading.vue'
 import TeamSection from '@/components/sections/teamSection.vue'
 
 const { locale } = useLanguage()
@@ -94,15 +95,6 @@ const displayCards = computed<CarouselCard[]>(() => [
             locale === 'bn'
               ? 'এই প্ল্যাটফর্মটি আগদিঘুলিয়া গ্রামকে উদযাপন করার এবং আমাদের সমাজকে এক সুতোয় সংযুক্ত রাখার এক আন্তরিক প্রচেষ্টা।'
               : 'This website is a place to celebrate Agdighulia and keep our community connected.'
-          }}
-        </p>
-
-        <!-- Story Description Line -->
-        <p class="text-xs sm:text-sm text-muted-foreground/80 max-w-xl mx-auto mt-2 leading-relaxed">
-          {{
-            locale === 'bn'
-              ? 'প্রতিবেশীসুলভ ঐক্য, প্রজন্মের পর প্রজন্ম লোকগাথা এবং সুন্দর ভবিষ্যতের যৌথ স্বপ্ন।'
-              : 'Neighbors looking out for one another, stories across generations, and a brighter shared future.'
           }}
         </p>
 

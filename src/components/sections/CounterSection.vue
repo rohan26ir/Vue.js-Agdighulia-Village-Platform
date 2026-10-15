@@ -46,7 +46,7 @@ const stats = computed(() => [
         <!-- Center Narrative Text & CTA Button -->
         <div class="flex-1 flex flex-col items-center justify-center text-center space-y-6 max-w-2xl px-2 sm:px-4 mx-auto">
           <h2 class="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-semibold leading-snug sm:leading-tight tracking-tight text-foreground text-center">
-            <span class="text-black">{{ t('counter.heroText') }}</span>
+            <span>{{ t('counter.heroText') }}</span>
           </h2>
 
           <RouterLink

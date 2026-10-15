@@ -48,14 +48,14 @@ onUnmounted(() => {
           <RouterLink class="flex items-center gap-3 no-underline" to="/" aria-label="Agdighulia Home">
             <span class="inline-grid w-10 h-10 place-items-center rounded-xl bg-[#FF3D00] text-white text-xl font-bold font-serif shadow-md shadow-[#FF3D00]/30">A</span>
             <div class="flex flex-col leading-tight">
-              <strong class="text-black font-extrabold uppercase tracking-tight">{{ t('nav.brand') }}</strong>
+              <strong class="text-foreground font-extrabold uppercase tracking-tight">{{ t('nav.brand') }}</strong>
               <small class="text-[11px] font-bold text-muted-foreground uppercase tracking-wider mt-0.5">{{ t('nav.subBrand') }}</small>
             </div>
           </RouterLink>
         </div>
 
         <!-- Center Navigation Links (Desktop) -->
-        <nav class="hidden md:flex items-center justify-center gap-8 mx-auto text-white bg-black w-130 h-[80%] px-10 rounded-full" aria-label="Main Navigation">
+        <nav class="hidden md:flex items-center justify-center gap-8 mx-auto text-white bg-[#1E1E21] w-130 h-[80%] px-10 rounded-full" aria-label="Main Navigation">
           <RouterLink to="/" exact-active-class="!text-white !font-bold" class="text-white/90 text-sm font-semibold no-underline hover:text-white transition-colors duration-180">{{ t('nav.home') }}</RouterLink>
           <RouterLink to="/history" active-class="!text-white !font-bold" class="text-white/90 text-sm font-semibold no-underline hover:text-white transition-colors duration-180">{{ t('nav.history') }}</RouterLink>
           <RouterLink to="/gallery" active-class="!text-white !font-bold" class="text-white/90 text-sm font-semibold no-underline hover:text-white transition-colors duration-180">{{ t('nav.gallery') }}</RouterLink>

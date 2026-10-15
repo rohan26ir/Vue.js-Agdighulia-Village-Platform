@@ -13,7 +13,7 @@ const { t } = useLanguage()
   <section class="bg-background text-white  pb-6 flex justify-center w-full">
     <div class="max-w-[90%] w-full mx-auto">
       <div
-        class="relative h-[55vh] lg:h-[80lvh] flex items-center justify-center text-center px-6 py-16 rounded-b-[16px] bg-cover bg-center bg-no-repeat overflow-hidden shadow-2xl"
+        class="relative h-[55vh] lg:h-[80lvh] flex items-center justify-center text-center px-6 py-16 rounded-[16px] bg-cover bg-center bg-no-repeat overflow-hidden shadow-2xl"
         style="background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.45), rgba(0, 0, 0, 0.70)), url('/hero-bg.jpg');"
       >
         <!-- Hero Center Content -->

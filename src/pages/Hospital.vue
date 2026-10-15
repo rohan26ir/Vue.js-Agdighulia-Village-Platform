@@ -15,16 +15,37 @@ const pharmacies = computed(() => HEALTHCARE_ITEMS.filter((item) => item.categor
     <div class="container max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       
       <!-- Page Header -->
-      <div class="flex flex-col justify-center items-center">
+      <div class="py-6 sm:py-10 mb-6 sm:mb-10">
         <Heading
-        as="h1"
-        size="lg"
-        badgeIcon="🏥"
-        :badge="locale === 'bn' ? 'চিকিৎসা ও স্বাস্থ্যসেবা' : 'Healthcare & Medical Centers'"
-        :title="locale === 'bn' ? 'চিকিৎসা ও স্বাস্থ্যসেবা' : 'Healthcare & Medical Centers'"
-        :description="locale === 'bn' ? 'আগদিঘুলিয়া গ্রামের 🏥 হাসপাতাল ও ফার্মেসীসমূহ' : 'Hospitals, clinics and pharmacies in Agdighulia'"
-        class="pb-14"
-      />
+          as="h1"
+          size="xl"
+          badgeIcon="🏥"
+          :badge="locale === 'bn' ? 'চিকিৎসা ও স্বাস্থ্যসেবা' : 'Healthcare & Clinics'"
+          :description="
+            locale === 'bn'
+              ? 'আগদিঘুলিয়ার প্রতিটি মানুষের স্বাস্থ্য সুরক্ষা ও জরুরি চিকিৎসার প্রয়োজনে সেবা প্রদানকারী হাসপাতাল, ক্লিনিক ও ফার্মেসীসমূহ।'
+              : 'Essential healthcare centers, medical clinics, and 24/7 pharmacies serving the families and people of Agdighulia.'
+          "
+        >
+          <template #title>
+            <template v-if="locale === 'bn'">
+              সুস্থ ও সুন্দর জীবনের জন্য
+              <span class="bg-[#a6f05c] text-black px-3.5 sm:px-5 py-0.5 sm:py-1 rounded-full inline-block font-extrabold align-middle mx-1 sm:mx-1.5 shadow-xs">
+                আস্থার
+              </span>
+              চিকিৎসা
+              <span class="text-[#FF3D00] font-extrabold">সেবা।</span>
+            </template>
+            <template v-else>
+              Caring for the health and
+              <span class="bg-[#a6f05c] text-black px-3.5 sm:px-5 py-0.5 sm:py-1 rounded-full inline-block font-extrabold align-middle mx-1 sm:mx-1.5 shadow-xs">
+                wellbeing
+              </span>
+              of every
+              <span class="text-[#FF3D00] font-extrabold">villager.</span>
+            </template>
+          </template>
+        </Heading>
       </div>
       
 

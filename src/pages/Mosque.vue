@@ -19,16 +19,37 @@ const neighborhoodMosques = computed(() =>
     <div class="container max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       
       <!-- Page Header -->
-      <div class="flex flex-col justify-center items-center">
-      <Heading
-        as="h1"
-        size="lg"
-        badgeIcon="🕌"
-        :badge="locale === 'bn' ? 'মসজিদ ও ইসলামিক নিদর্শন' : 'Mosques & Islamic Centers'"
-        :title="locale === 'bn' ? 'আমাদের মসজিদ ও ইসলামিক নিদর্শন' : 'Mosques & Islamic Centers'"
-        :description="locale === 'bn' ? 'আগদিঘুলিয়া গ্রামের 🕌 পবিত্র মসজিদ, জামাত ও নামাজের সময়সূচি' : 'Community mosques, prayer timings & spiritual landmarks in Agdighulia'"
-        class="pb-10"
-      />
+      <div class="py-6 sm:py-10 mb-6 sm:mb-10">
+        <Heading
+          as="h1"
+          size="xl"
+          badgeIcon="🕌"
+          :badge="locale === 'bn' ? 'মসজিদ ও ইসলামিক ঐতিহ্য' : 'Mosques & Heritage'"
+          :description="
+            locale === 'bn'
+              ? 'আগদিঘুলিয়ার প্রতিটি পাড়ায় অবস্থিত জামে মসজিদসমূহ, জামাতের সময়সূচি ও ধর্মীয় সমাজকল্যাণ কার্যক্রম।'
+              : 'Sacred community mosques, daily prayer timings, and spiritual landmarks across Agdighulia.'
+          "
+        >
+          <template #title>
+            <template v-if="locale === 'bn'">
+              ঈমান, শান্তি ও ঐক্যের
+              <span class="bg-[#a6f05c] text-black px-3.5 sm:px-5 py-0.5 sm:py-1 rounded-full inline-block font-extrabold align-middle mx-1 sm:mx-1.5 shadow-xs">
+                পবিত্র
+              </span>
+              আল্লাহর
+              <span class="text-[#FF3D00] font-extrabold">ঘর।</span>
+            </template>
+            <template v-else>
+              Sacred sanctuaries of
+              <span class="bg-[#a6f05c] text-black px-3.5 sm:px-5 py-0.5 sm:py-1 rounded-full inline-block font-extrabold align-middle mx-1 sm:mx-1.5 shadow-xs">
+                faith
+              </span>
+              and community
+              <span class="text-[#FF3D00] font-extrabold">peace.</span>
+            </template>
+          </template>
+        </Heading>
       </div>  
 
       <!-- Daily Prayer Times Card / Schedule Bar -->

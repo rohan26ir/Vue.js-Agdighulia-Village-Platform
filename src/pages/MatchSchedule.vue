@@ -7,8 +7,8 @@ import { MATCH_SCHEDULES, CRICKET_CLUBS, type MatchTimelineItem } from '@/data/s
 
 const { locale } = useLanguage()
 
-// View toggle: 'tree' (default) or 'list'
-const activeView = ref<'tree' | 'list'>('tree')
+// View toggle: 'list' (default) or 'tree'
+const activeView = ref<'tree' | 'list'>('list')
 
 const selectedStage = ref<'all' | 'league' | 'playoffs'>('all')
 const selectedClub = ref<string>('all')
@@ -77,18 +77,37 @@ const getClubSlug = (shortName: string): string => {
       </div>
 
       <!-- Page Header (Centered Badge, Title, Description) -->
-      <div class="flex flex-col justify-center items-center py-20">
+      <div class="py-6 sm:py-10 mb-4 sm:mb-8">
         <Heading
-        as="h1"
-        size="lg"
-        badgePing
-        maxWidth="4xl"
-        :badge="locale === 'bn' ? 'টুর্নামেন্ট ব্র্যাকেট ও সময়সূচি' : 'Tournament Bracket & Schedule'"
-        :title="locale === 'bn' ? 'আগদিঘুলিয়া প্রিমিয়ার লীগ (APL) ২০২৬' : 'Agdighulia Premier League (APL) 2026'"
-        :description="locale === 'bn'
-          ? 'গ্রামের ৫টি রেজিস্টার্ড ক্রিকেট ক্লাবের মধ্যকার রোমাঞ্চকর টি-২০ নকআউট ট্রি ও টুর্নামেন্ট সূচি'
-          : 'Knockout tournament tree bracket, match fixtures, playing grounds, and timings'"
-      />
+          as="h1"
+          size="xl"
+          badgeIcon="🏆"
+          :badge="locale === 'bn' ? 'টুর্নামেন্ট ব্র্যাকেট ও সময়সূচি' : 'Tournament Bracket & Schedule'"
+          :description="
+            locale === 'bn'
+              ? 'গ্রামের ৫টি রেজিস্টার্ড ক্রিকেট ক্লাবের মধ্যকার রোমাঞ্চকর টি-২০ নকআউট ট্রি ও টুর্নামেন্ট সূচি।'
+              : 'Knockout tournament tree bracket, match fixtures, playing grounds, and timings.'
+          "
+        >
+          <template #title>
+            <template v-if="locale === 'bn'">
+              আগদিঘুলিয়া প্রিমিয়ার লীগ
+              <span class="bg-[#a6f05c] text-black px-3.5 sm:px-5 py-0.5 sm:py-1 rounded-full inline-block font-extrabold align-middle mx-1 sm:mx-1.5 shadow-xs">
+                (APL)
+              </span>
+              ২০২৬
+              <span class="text-[#FF3D00] font-extrabold">সূচি।</span>
+            </template>
+            <template v-else>
+              Agdighulia Premier League
+              <span class="bg-[#a6f05c] text-black px-3.5 sm:px-5 py-0.5 sm:py-1 rounded-full inline-block font-extrabold align-middle mx-1 sm:mx-1.5 shadow-xs">
+                (APL)
+              </span>
+              2026
+              <span class="text-[#FF3D00] font-extrabold">Fixtures.</span>
+            </template>
+          </template>
+        </Heading>
       </div>
       
 
@@ -112,48 +131,56 @@ const getClubSlug = (shortName: string): string => {
         </div>
       </div>
 
-      <!-- View Switcher (Tree View vs List View) - Centered -->
-      <div class="flex flex-col items-center justify-center text-center gap-3.5 py-10">
-        <div class="flex flex-col items-center justify-center text-center space-y-1.5">
-          <h2 class="text-xl sm:text-2xl font-black text-foreground flex items-center justify-center gap-2">
-            <span>{{ activeView === 'tree' ? '🌳' : '📋' }}</span>
-            <span>{{ activeView === 'tree' ? (locale === 'bn' ? 'টুর্নামেন্ট নকআউট ট্রি' : 'Tournament Knockout Tree') : (locale === 'bn' ? 'ফিক্সচার তালিকা' : 'Fixtures List View') }}</span>
-          </h2>
-          <p class="text-xs sm:text-sm text-muted-foreground text-center max-w-xl mx-auto">
-            {{ activeView === 'tree'
-              ? (locale === 'bn' ? 'গ্রুপ পর্ব থেকে ফাইনাল পর্যন্ত প্রতিটি ম্যাচের সংযোগ ট্রি ব্র্যাকেটে দেখুন' : 'Visual bracket showing how teams progress from qualifiers to the championship')
-              : (locale === 'bn' ? 'তারিখ ও ভেন্যু অনুযায়ী সকল ম্যাচের বিস্তারিত কার্ড' : 'Detailed cards filtered by date, stage, and teams') }}
-          </p>
-        </div>
+      <!-- View Switcher (Tree View vs List View) - Subheading Variant -->
+      <div class="w-full pt-6 pb-2">
+        <Heading
+          as="h2"
+          variant="subheading"
+          :badgeIcon="activeView === 'tree' ? '🌳' : '📋'"
+          :badge="activeView === 'tree' ? (locale === 'bn' ? 'ব্র্যাকেট ভিউ' : 'Bracket View') : (locale === 'bn' ? 'ফিক্সচার তালিকা' : 'Fixture List')"
+          :description="
+            activeView === 'tree'
+              ? (locale === 'bn' ? 'গ্রুপ পর্ব থেকে ফাইনাল পর্যন্ত প্রতিটি ম্যাচের সংযোগ ট্রি ব্র্যাকেটে দেখুন।' : 'Visual bracket showing how teams progress from qualifiers to the championship.')
+              : (locale === 'bn' ? 'তারিখ ও ভেন্যু অনুযায়ী সকল ম্যাচের বিস্তারিত কার্ড।' : 'Detailed cards filtered by date, stage, and teams.')
+          "
+          :title="
+            activeView === 'tree'
+              ? (locale === 'bn' ? 'টুর্নামেন্ট নকআউট ট্রি ব্র্যাকেট' : 'Tournament Knockout Tree Bracket')
+              : (locale === 'bn' ? 'অফিসিয়াল ম্যাচ ফিক্সচার শিডিউল' : 'Official Match Schedule Fixtures')
+          "
+        >
 
-        <div class="inline-flex p-1 rounded-2xl bg-muted border border-border/70 shrink-0">
-          <button
-            type="button"
-            :class="[
-              'px-5 py-2.5 rounded-xl text-xs sm:text-sm font-bold transition-all cursor-pointer flex items-center gap-1.5',
-              activeView === 'tree'
-                ? 'bg-[#FF3D00] text-white shadow-xs'
-                : 'text-muted-foreground hover:text-foreground',
-            ]"
-            @click="activeView = 'tree'"
-          >
-            <span>🌳</span>
-            <span class="text-white">{{ locale === 'bn' ? 'ট্রি ভিউ' : 'Tree Bracket' }}</span>
-          </button>
-          <button
-            type="button"
-            :class="[
-              'px-5 py-2.5 rounded-xl text-xs sm:text-sm font-bold transition-all cursor-pointer flex items-center gap-1.5',
-              activeView === 'list'
-                ? 'bg-[#FF3D00] text-white shadow-xs'
-                : 'text-muted-foreground hover:text-foreground',
-            ]"
-            @click="activeView = 'list'"
-          >
-            <span>📋</span>
-            <span class="text-white">{{ locale === 'bn' ? 'তালিকা ভিউ' : 'List View' }}</span>
-          </button>
-        </div>
+          <template #actions>
+            <div class="inline-flex p-1 rounded-2xl bg-muted border border-border/70 shrink-0">
+              <button
+                type="button"
+                :class="[
+                  'px-4 sm:px-5 py-2 rounded-xl text-xs sm:text-sm font-bold transition-all cursor-pointer flex items-center gap-1.5',
+                  activeView === 'list'
+                    ? 'bg-[#FF3D00] text-white shadow-xs'
+                    : 'text-foreground/75 hover:text-foreground hover:bg-card/50',
+                ]"
+                @click="activeView = 'list'"
+              >
+                <span>📋</span>
+                <span>{{ locale === 'bn' ? 'তালিকা ভিউ' : 'List View' }}</span>
+              </button>
+              <button
+                type="button"
+                :class="[
+                  'px-4 sm:px-5 py-2 rounded-xl text-xs sm:text-sm font-bold transition-all cursor-pointer flex items-center gap-1.5',
+                  activeView === 'tree'
+                    ? 'bg-[#FF3D00] text-white shadow-xs'
+                    : 'text-foreground/75 hover:text-foreground hover:bg-card/50',
+                ]"
+                @click="activeView = 'tree'"
+              >
+                <span>🌳</span>
+                <span>{{ locale === 'bn' ? 'ট্রি ভিউ' : 'Tree Bracket' }}</span>
+              </button>
+            </div>
+          </template>
+        </Heading>
       </div>
 
       <!-- ========================================== -->
@@ -462,7 +489,7 @@ const getClubSlug = (shortName: string): string => {
                 'px-4 py-2 rounded-xl text-xs font-extrabold transition-all cursor-pointer whitespace-nowrap',
                 selectedStage === 'all'
                   ? 'bg-[#FF3D00] text-white shadow-xs'
-                  : 'bg-muted text-muted-foreground hover:text-foreground',
+                  : 'bg-muted text-foreground/80 hover:text-foreground hover:bg-muted/80 border border-border/50',
               ]"
               @click="selectedStage = 'all'"
             >
@@ -474,7 +501,7 @@ const getClubSlug = (shortName: string): string => {
                 'px-4 py-2 rounded-xl text-xs font-extrabold transition-all cursor-pointer whitespace-nowrap',
                 selectedStage === 'league'
                   ? 'bg-[#FF3D00] text-white shadow-xs'
-                  : 'bg-muted text-muted-foreground hover:text-foreground',
+                  : 'bg-muted text-foreground/80 hover:text-foreground hover:bg-muted/80 border border-border/50',
               ]"
               @click="selectedStage = 'league'"
             >
@@ -486,7 +513,7 @@ const getClubSlug = (shortName: string): string => {
                 'px-4 py-2 rounded-xl text-xs font-extrabold transition-all cursor-pointer whitespace-nowrap',
                 selectedStage === 'playoffs'
                   ? 'bg-[#FF3D00] text-white shadow-xs'
-                  : 'bg-muted text-muted-foreground hover:text-foreground',
+                  : 'bg-muted text-foreground/80 hover:text-foreground hover:bg-muted/80 border border-border/50',
               ]"
               @click="selectedStage = 'playoffs'"
             >
@@ -501,7 +528,7 @@ const getClubSlug = (shortName: string): string => {
             </span>
             <select
               v-model="selectedClub"
-              class="px-3 py-2 rounded-xl bg-muted border border-border text-foreground text-xs font-bold cursor-pointer outline-none focus:border-[#FF3D00]"
+              class="px-3.5 py-2 rounded-xl bg-card border border-border text-foreground text-xs font-bold cursor-pointer outline-none focus:border-[#FF3D00] shadow-xs"
             >
               <option value="all">{{ locale === 'bn' ? 'সকল দল' : 'All Teams' }}</option>
               <option v-for="c in CRICKET_CLUBS" :key="c.id" :value="c.shortName">

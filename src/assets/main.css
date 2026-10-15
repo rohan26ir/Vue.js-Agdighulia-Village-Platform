@@ -1,6 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Noto+Serif+Bengali:wght@400;600;700;800&family=Hind+Siliguri:wght@400;600;700&display=swap');
 @import "tailwindcss";
-@import './base.css';
+@custom-variant dark (&:where(.dark, .dark *));
 
 @theme {
   --color-background: var(--background);
@@ -90,7 +90,9 @@
 
   --color-ink: var(--foreground);
   --color-ink-dark: var(--foreground);
-  --color-muted: var(--muted-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-muted-text: var(--muted-foreground);
   --color-muted-light: #6b7280;
   --color-paper: var(--background);
   --color-soft: var(--card);
@@ -99,19 +101,26 @@
 }
 
 .dark,
-html.dark {
+html.dark,
+body.dark {
   color-scheme: dark;
   color: var(--foreground);
-  background-color: var(--background);
+  background-color: #0A0A0A;
 
-  --background: #000000;
+  --background: #0A0A0A;
+  --color-background: #0A0A0A;
   --foreground: #f8fafc;
+  --color-foreground: #f8fafc;
 
-  --card: #121214;
+  --card: #1E1E21;
+  --color-card: #1E1E21;
   --card-foreground: #f8fafc;
+  --color-card-foreground: #f8fafc;
 
-  --popover: #121214;
+  --popover: #1E1E21;
+  --color-popover: #1E1E21;
   --popover-foreground: #f8fafc;
+  --color-popover-foreground: #f8fafc;
 
   --primary: #FF3D00;
   --primary-foreground: #ffffff;
@@ -139,11 +148,23 @@ html.dark {
 
   --color-ink: var(--foreground);
   --color-ink-dark: var(--foreground);
-  --color-muted: var(--muted-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-muted-text: var(--muted-foreground);
   --color-muted-light: #71717A;
   --color-paper: var(--background);
   --color-soft: var(--card);
   --color-border: var(--border);
+}
+
+html.dark,
+html.dark body,
+body.dark,
+html.dark .site-shell,
+html.dark main,
+html.dark #app {
+  background-color: #0A0A0A !important;
+  color: #f8fafc;
 }
 
 * {
@@ -278,7 +299,7 @@ main {
 
 .brand-copy small {
   margin-top: 2px;
-  color: var(--color-muted);
+  color: var(--muted-foreground);
   font-size: 12px;
 }
 
@@ -288,7 +309,7 @@ main {
 
 .main-nav a {
   padding: 8px 0;
-  color: var(--color-muted);
+  color: var(--muted-foreground);
   font-size: 15px;
   font-weight: 600;
   text-decoration: none;
@@ -401,7 +422,7 @@ main {
 .welcome-copy p,
 .about-copy p,
 .not-found>p:not(.eyebrow) {
-  color: var(--color-muted);
+  color: var(--muted-foreground);
 }
 
 .text-link {
@@ -481,7 +502,7 @@ main {
 
 .value-card p {
   margin-bottom: 0;
-  color: var(--color-muted);
+  color: var(--muted-foreground);
   font-size: 14px;
 }
 
@@ -545,7 +566,7 @@ main {
 
 .about-copy p {
   margin-bottom: 20px;
-  color: var(--color-muted);
+  color: var(--muted-foreground);
 }
 
 .not-found {
